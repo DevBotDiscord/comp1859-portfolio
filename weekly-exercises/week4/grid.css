@@ -1,0 +1,50 @@
+.content{
+  background-color: rgb(0, 0, 231);
+	/* width: 80%; relative size or elastic */
+	width: 980px;  /*absolute size or static*/
+	margin: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'Header Header Header Header Header'
+  'Nav Main Main Aside Aside'
+  'Footer Footer Footer Footer Footer';
+  /* grid-template-columns: auto auto auto; */
+  grid-template-columns: 100px auto auto auto 200px;
+  grid-template-rows:  150px auto 120px;
+  /* grid-column-gap: 10px;
+  grid-row-gap: 20px; */
+  grid-gap: 10px;
+  background-color: #08ebfc;
+  padding: 10px;
+}
+.grid-container > div {	
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  text-align: left;
+  padding: 20px 20px;
+  font-size: 1em;
+}
+
+.grid-item1 {grid-area: Header;}
+.grid-item2 {grid-area: Nav;}
+.grid-item3 {grid-area: Main ;}
+.grid-item4 {grid-area: Aside;}
+.grid-item5 {grid-area: Footer;}
+
+
+/* .container div.header {
+  grid-area: header;
+  text-align: center;
+}
+.container div.menu {
+  grid-area: menu;
+}
+.container div.content {
+  grid-area: content;
+}
+.container div.footer {
+  grid-area: footer;
+  text-align: center;  
+} */

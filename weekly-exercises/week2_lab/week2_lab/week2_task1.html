@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists</title>
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --text: #1e293b;
+            --muted: #475569;
+            --card: #ffffff;
+            --line: #e2e8f0;
+            --accent: #2563eb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            margin: 0 0 24px;
+            text-align: center;
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+        }
+
+        article {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .artist-image {
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .bio {
+            margin-top: 0;
+        }
+
+        section,
+        aside {
+            padding-top: 12px;
+            margin-top: 12px;
+            border-top: 1px solid var(--line);
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--muted);
+        }
+
+        p {
+            margin: 6px 0;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            overflow-wrap: anywhere;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (min-width: 760px) {
+            article {
+                display: grid;
+                grid-template-columns: 1.1fr 1fr;
+                gap: 16px 24px;
+                align-items: start;
+            }
+
+            article h2,
+            article .bio {
+                grid-column: 1 / -1;
+            }
+
+            article section {
+                margin-top: 0;
+            }
+
+            article section:last-of-type {
+                grid-column: 2 / 3;
+            }
+
+            article aside {
+                grid-column: 1 / -1;
+                margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>3 artists you should know about</h1>
+        
+        <article>
+        
+            <h2>Salvador Dali</h2>
+            <p class="bio">Spanish surrealist artist known for dreamlike imagery and symbolic scenes.</p>
+            <img class="artist-image" src="images/dali.jpg" alt="Salvador Dali portrait">
+
+            <section>
+                <h3>when</h3>
+                <p>born 1901</p>
+                <p>died 1989</p>
+            </section>
+        
+            <section>
+                <h3>famous works</h3>
+                <p>The Persistence of Memory</p>
+                <p>Metamorphosis of Narcissus</p>
+                <p>	The Sacrament of the Last Supper</p>
+            </section>
+        
+            <aside>
+                <h3>More information</h3>
+                <p><a href="http://en.wikipedia.org/wiki/Salvador_Dali">What wikipedia says about dali</a></p>
+                <p><a href="http://www.salvador-dali.org/">http://www.salvador-dali.org/</a></p>
+                <p><a href="http://www.edali.org/">http://www.edali.org/</a></p>
+            </aside>
+        
+        </article>
+        
+        <article>
+            <h2>JMW Turner</h2>
+            <p class="bio">English romantic painter celebrated for light, atmosphere, and dramatic seascapes.</p>
+            <img class="artist-image" src="images/turner.jpg" alt="JMW Turner painting detail">
+
+            <section>
+                <h3>when</h3>
+                <p>born 1775</p>
+                <p>died 1851</p>
+            </section>
+        
+            <section>
+                <h3>famous works</h3>
+                <p>Burial at Sea</p>
+                <p>The Grand Canal, Venice</p>
+                <p>The Fighting Temeraire</p>
+            </section>
+        
+            <aside>
+                <h3>More information</h3>
+                <p><a href="http://en.wikipedia.org/wiki/J._M._W._Turner">What wikipedia says about turner</a></p>
+                <p><a href="http://www.britainexpress.com/History/bio/turner.htm">http://www.britainexpress.com/History/bio/turner.htm</a></p>
+                <p><a href="http://www.william-turner.org/ ">http://www.william-turner.org/</a></p>
+            </aside>
+        
+        </article>
+        
+        <article>
+        
+            <h2>Damien Hirst</h2>
+            <p class="bio">British contemporary artist known for provocative conceptual installations.</p>
+            <img class="artist-image" src="images/hirst.jpg" alt="Damien Hirst artwork">
+
+            <section>
+                <h3>when</h3>
+                <p>born 1965</p>
+                <p></p>
+            </section>
+        
+            <section>
+                <h3>famous works</h3>
+                <p>The Physical Impossibility of Death in the Mind of Someone Living</p>
+                <p>Pharmacy</p>
+                <p>Anthraquinone-1-Diazonium Chloride</p>
+            </section>
+        
+            <aside>
+                <h3>More information</h3>
+                <p><a href="http://www.damienhirst.com/">
+                http://www.damienhirst.com/</a></p>
+                <p><a href="http://www.artchive.com/artchive/H/hirst.html">
+                http://www.artchive.com/artchive/H/hirst.html</a></p>
+                <p><a href="http://www.guardian.co.uk/artanddesign/2012/apr/02/damien-hirst-retrospective-tate-modern">
+                http://www.guardian.co.uk/artanddesign/2012/apr/02/damien-hirst-retrospective-tate-modern</a></p>
+            </aside>
+        </article>
+         </main>
+    
+</body>
+</html>
