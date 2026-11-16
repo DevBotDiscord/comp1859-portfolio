@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rio Quân Portfolio | Projects</title>
+  <meta name="description" content="A selection of web design and development projects by Rio Quân.">
+  <!-- Bootstrap CSS (CDN) loaded first so our own style.css can override it -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">Rio Quân</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primaryNav">☰ Menu</button>
+      <nav class="main-nav" id="primaryNav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html" aria-current="page">Portfolio</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero">
+      <h1>Portfolio</h1>
+      <p class="lead">A few example projects. Use the filters below to browse by category.</p>
+    </section>
+
+    <!-- Filter buttons: JS toggles which project cards are visible -->
+    <div class="filter-bar" role="group" aria-label="Filter projects by category">
+      <button data-filter="all" aria-pressed="true">All</button>
+      <button data-filter="dashboard" aria-pressed="false">Dashboard</button>
+      <button data-filter="landing" aria-pressed="false">Landing Page</button>
+    </div>
+
+    <section class="project-grid" aria-label="Project list">
+      <article class="project-card" data-category="dashboard">
+        <img src="images/autoads.png" alt="AutoAds dashboard showing campaign overview, connected Telegram accounts and message history">
+        <div class="card-body">
+          <h2>AutoAds — Telegram Automation Dashboard</h2>
+          <p>An admin dashboard for scheduling and monitoring automated Telegram
+             message campaigns: account/group management, campaign status and
+             live send-history tracking.</p>
+          <span class="tag">Dashboard</span><span class="tag">Automation</span>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="landing">
+        <img src="images/botdash.png" alt="RyanHub landing page advertising Zalo bot rental by slot, ready in 60 seconds">
+        <div class="card-body">
+          <h2>RyanHub — Zalo Bot Rental Landing Page</h2>
+          <p>A marketing landing page for a slot-based Zalo bot rental service,
+             with pricing, VietQR payment flow and a live "dashboard" preview
+             mock-up on the hero section.</p>
+          <span class="tag">Landing Page</span><span class="tag">Product Marketing</span>
+        </div>
+      </article>
+
+      <article class="project-card" data-category="dashboard">
+        <img src="images/googlefamtool.png" alt="Fam Manager dashboard showing Google Family account overview, jobs and error counts">
+        <div class="card-body">
+          <h2>Fam Manager — Google Family Operations Tool</h2>
+          <p>An internal operations dashboard for managing Google Family
+             groups at scale: account overview, background job monitoring,
+             API key management and activity logs.</p>
+          <span class="tag">Dashboard</span><span class="tag">API</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Rio Quân. Built for COMP1589 coursework.</p>
+  </footer>
+
+  <button id="backToTop" aria-label="Back to top">↑</button>
+  <script src="js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+/* =========================================================
+   style.css — Shared external stylesheet for the whole site
+   (Marking criteria: external CSS only, no internal <style>)
+   ========================================================= */
+
+/* ---- 1. CSS variables (design tokens) ---------------------
+   Keeping colours/fonts/spacing in variables makes the whole
+   site consistent and easy to re-theme (see dark mode below). */
+:root {
+  --color-bg: #f7f7f5;
+  --color-surface: #ffffff;
+  --color-text: #222222;
+  --color-muted: #5a5a5a;
+  --color-primary: #2d6a4f;
+  --color-primary-dark: #1b4332;
+  --color-border: #e2e2e0;
+  --font-body: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: Georgia, "Times New Roman", serif;
+  --max-width: 68.75rem;   /* was 1100px — rem scales with the user's root font-size */
+  --radius: 0.5rem;        /* was 8px */
+}
+
+/* Dark theme overrides, toggled by JS adding data-theme="dark" to <html> */
+[data-theme="dark"] {
+  --color-bg: #14181b;
+  --color-surface: #1e2428;
+  --color-text: #eaeaea;
+  --color-muted: #b0b0b0;
+  --color-primary: #74c69d;
+  --color-primary-dark: #52b788;
+  --color-border: #333a3f;
+}
+
+/* ---- 2. Reset / base ---------------------------------------- */
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;              /* good line spacing for readability */
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--color-primary); }
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 0.1875rem solid var(--color-primary);   /* visible focus = accessibility (was 3px) */
+  outline-offset: 0.125rem;                        /* was 2px */
+}
+
+/* Bootstrap gives h1/h2/h3 its own large, fluid (vw-based) font-size —
+   without this, headings (e.g. the "What I do" card titles) render far
+   bigger than intended. We keep our own fixed scale on top of it. */
+h1, h2, h3 { font-family: var(--font-heading); line-height: 1.25; }
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.15rem; }
+
+/* ---- 3. Skip link (accessibility: keyboard users can bypass nav) */
+.skip-link {
+  position: absolute;
+  left: -62.5rem;    /* was -999px */
+  top: 0;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* ---- 4. Header / navigation ---------------------------------- */
+.site-header {
+  position: sticky;              /* advanced feature: sticky header */
+  top: 0;
+  z-index: 50;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+}
+
+.brand { font-weight: bold; font-size: 1.25rem; text-decoration: none; color: var(--color-text); }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 0.25rem 0.1rem;
+  border-bottom: 0.125rem solid transparent;   /* was 2px */
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  border-bottom-color: var(--color-primary);
+}
+
+.theme-toggle {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+}
+
+/* ---- 5. Layout helpers ---------------------------------------- */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+/* Text columns kept narrower than the page for readability
+   (marking criteria: "columns not filling the width of the page") */
+.prose {
+  max-width: 68ch;
+}
+
+.hero {
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 2rem;
+}
+
+.hero h1 { font-size: 2.25rem; margin-bottom: 0.5rem; }
+.hero p.lead { color: var(--color-muted); font-size: 1.1rem; max-width: 60ch; }
+
+.btn {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius);
+  margin-top: 1rem;
+}
+.btn:hover { background: var(--color-primary-dark); }
+
+/* Multi-column grid used on the home page (feature cards) and
+   skills page — satisfies "layout going beyond single column" */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--color-surface);
+  color: var(--color-text);   /* Bootstrap's .card forces a dark text colour by
+                                  default — without this it stays black-on-black
+                                  in dark mode. Explicitly reclaim it here. */
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+/* Portfolio grid */
+.filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.filter-bar button {
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.filter-bar button[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.project-card img { border-radius: var(--radius) var(--radius) 0 0; }
+.project-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+.project-card .card-body { padding: 1rem; }
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  margin-right: 0.25rem;
+}
+
+/* Skills page: two columns, skill bars */
+.skills-columns {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+.skill-bar {
+  background: var(--color-border);
+  border-radius: 999px;
+  height: 0.625rem;   /* was 10px */
+  margin: 0.35rem 0 1rem;
+  overflow: hidden;
+}
+.skill-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--color-primary);
+}
+
+/* Contact page: form + info side by side */
+.contact-columns {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+}
+form .field { margin-bottom: 1rem; }
+form label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+form input, form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: inherit;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.form-status { margin-top: 0.75rem; font-weight: 600; }
+
+/* ---- 6. Footer -------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* Back-to-top button */
+#backToTop {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  display: none;
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  width: 2.75rem;    /* was 44px */
+  height: 2.75rem;   /* was 44px */
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+/* ---- 7. Responsive design (media queries = advanced feature) ---
+   Breakpoints in em rather than px: em is relative to the browser's
+   root font-size, so if a user has increased their default zoom/font
+   size the layout switches to mobile view earlier, in line with their
+   settings, instead of a fixed pixel value ignoring it. */
+@media (max-width: 50em) {   /* was 800px */
+  .grid-3 { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
+  .skills-columns { grid-template-columns: 1fr; }
+  .contact-columns { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 40em) {   /* was 640px */
+  .nav-toggle { display: inline-block; }
+  .main-nav {
+    display: none;
+    width: 100%;
+  }
+  .main-nav.open { display: block; }
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem 0 0.75rem;
+  }
+  .nav-wrap { flex-wrap: wrap; }
+}
+
+/* Respect users who prefer less motion (accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
